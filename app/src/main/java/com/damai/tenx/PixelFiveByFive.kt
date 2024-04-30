@@ -131,23 +131,43 @@ class PixelFiveByFive {
             ).let {
                 (it * 100).toInt()
             }
-            Log.d("zxczxc", "pixel = $pixel, luminosity = ${(luminosity * 100).toInt()}%, hue = $hue degree, saturation = ${(saturation * 100).toInt()}%")
+            Log.d(TAG, "pixel = $pixel, luminosity = ${(luminosity * 100).toInt()}%, hue = $hue degree, saturation = ${saturation}%")
 
             if (saturation > 20) {
                 resultList.add(pixel)
             }
         }
-        Log.d("zxczxc", "\n\nResult list = $resultList")
+        Log.d(TAG, "\n\nResult list = $resultList")
         return resultList.toList()
     }
 
     fun determineColorfulImage(
         givenPixelList: List<Triple<Int, Int, Int>>
-    ): Boolean {
-        return true
+    ): ImageState {
+        var totalSaturation = 0
+        var increment = 0
+        for (pixel in givenPixelList) {
+            val luminosity = getLuminosity(pixel = pixel)
+            val saturation = getSaturation(
+                luminosity = luminosity,
+                pixel = pixel
+            ).let {
+                (it * 100).toInt()
+            }
+            totalSaturation += saturation
+            increment++
+        }
+
+        val average = totalSaturation / increment
+        return if (average < 30) {
+            ImageState.BlackOrWhite
+        } else {
+            ImageState.Colorful
+        }
     }
 
     companion object {
         private const val HIGH_PIXEL = 255.0
+        private const val TAG = "PixelResult"
     }
 }

@@ -89,6 +89,9 @@ class MainActivity : AppCompatActivity() {
                     Triple(48, 35, 46),
                 )
             )
+
+            val resultText = "The image is $result"
+            binding.tvResultCase2.text = resultText
         }
     }
 }
