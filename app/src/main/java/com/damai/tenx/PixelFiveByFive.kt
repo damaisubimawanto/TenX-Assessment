@@ -154,11 +154,13 @@ class PixelFiveByFive {
             ).let {
                 (it * 100).toInt()
             }
+            Log.d(TAG, "pixel = $pixel, luminosity = ${(luminosity * 100).toInt()}%, saturation = ${saturation}%")
             totalSaturation += saturation
             increment++
         }
 
         val average = totalSaturation / increment
+        Log.d(TAG, "Average saturation = $average")
         return if (average < 30) {
             ImageState.BlackOrWhite
         } else {
