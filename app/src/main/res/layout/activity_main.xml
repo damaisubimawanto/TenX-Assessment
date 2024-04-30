@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCase1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Case 1" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvResultCase1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp" />
+
+    <Space
+        android:id="@+id/spaceBetween"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCase2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Case 2" />
+
+</LinearLayout>
